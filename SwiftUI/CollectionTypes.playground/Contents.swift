@@ -63,3 +63,32 @@ for object in mixedArray {
         print(stringValue)
     }
 }
+
+// Dictionary
+var bookDictionary: [String: String] = [
+    "100-432112": "Wind in the Willows",
+    "100-432113": "The Secret Garden",
+    "100-432114": "The Little Prince",
+    "100-432115": "The Lion, the Witch, and the Wardrobe"
+]
+
+var myDictionary = [Int: String]()
+
+let keys = ["100-432112", "100-432113", "100-432114", "100-432115"]
+let values = ["Wind in the Willows", "The Secret Garden", "The Little Prince", "The Lion, the Witch, and the Wardrobe"]
+
+var bookDict = Dictionary(uniqueKeysWithValues: zip(keys, values))
+print(bookDict.count)
+print(bookDict["200-532874"] ?? "Book not found")
+
+bookDict.updateValue("The Ruins", forKey: "200-532874")
+
+bookDict["300-8998841"] = "The Overlook"
+
+bookDict["300-898871"] = nil        // 값 제거
+bookDict.removeValue(forKey: "300-898871")
+
+for (key, value) in bookDict {
+    print("key: \(key), value: \(value)")
+}
+
