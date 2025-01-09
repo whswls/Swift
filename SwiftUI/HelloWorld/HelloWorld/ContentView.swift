@@ -7,37 +7,21 @@
 
 import SwiftUI
 
-// Main Content View
 struct ContentView: View {
     @State var myLayout: AnyLayout = AnyLayout(VStackLayout())
     
     var body: some View {
-        myLayout{
-            Text("Sample Code")
-            Text("Sample Code")
-            Text("Sample Code")
-        }
-        HStack {
-            Button(action: {
-                myLayout = AnyLayout(HStackLayout())
-            }) {
-                Text("HStack")
-            }
-            Button(action: {
-                myLayout = AnyLayout(VStackLayout())
-            }) {
-                Text("VStack")
-            }
-        }
-        
-        HStack {
-            Image(systemName: "airplane")
-            Text("Flight times: ")
-                .layoutPriority(1)      // 우선순위 부여
-            Text("London")
-        }
-        .font(.largeTitle)
-        .lineLimit(1)
+        Text("Hello World")
+            .font(.largeTitle)
+            .border(Color.black)
+            //.frame(width: 300, height: 100, alignment: .center)
+            //.frame(minWidth: 100, maxWidth: 300,
+            //      minHeight: 100, maxHeight: 100,
+            //      alignment: .center)
+            .frame(minWidth: 0, maxWidth: .infinity,
+                   minHeight: 0, maxHeight: .infinity)
+            .background(Color.green)
+            .ignoresSafeArea(.all)      // 전체 화면을 쓸 수 있게 해 주는 생성자
     }
 }
 
