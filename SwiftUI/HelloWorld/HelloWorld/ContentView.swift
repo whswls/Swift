@@ -22,6 +22,16 @@ struct MyVStack<Content: View>: View {
     }
 }
 
+struct VerticalLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .center) {
+            configuration.icon
+                .padding(5)
+            configuration.title
+        }
+    }
+}
+
 // Main Content View
 struct ContentView: View {
     // 상태를 관리하는 프로퍼티
@@ -36,6 +46,24 @@ struct ContentView: View {
                 Image(systemName: "star.fill")
                 Image(systemName: "star")
             }
+            Button(action: {
+                print("click")
+            })
+            {
+                Label("Welcome to SwiftUI", systemImage: "person.circle.fill")
+            }
+            Label(title: {
+                Text("Welcome to SwiftUI")
+                    .font(.largeTitle)
+            },
+                  icon: {
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width: 25, height: 25)
+            })
+            .labelStyle(.titleAndIcon)
+            Label("수직 레이블", systemImage: "moon.fill")
+                .labelStyle(VerticalLabelStyle())
         }
     }
 }
