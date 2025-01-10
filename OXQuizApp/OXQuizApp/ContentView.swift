@@ -82,7 +82,7 @@ struct ContentView: View {
     func newQuesiont() {
         number1 = Int.random(in: 0...10)
         number2 = Int.random(in: 0...10)
-        resultNumber = Int.random(in: 0...100)
+        resultNumber = Bool.random() ? number1 * number2 : Int.random(in: 0...100)
     }
     
     // 게임 재시작 함수
