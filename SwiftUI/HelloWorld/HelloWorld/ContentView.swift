@@ -8,21 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var myLayout: AnyLayout = AnyLayout(VStackLayout())
+    
+    var colors: [Color] = [.black , .red , .green , .blue]
+    var colornames = ["Black", "Red", "Green", "Blue"]
+    
+    @State private var colorIndex = 0
+    @State private var rotation: Double = 0
+    @State private var text: String = "Welcome to SwiftUI"
     
     var body: some View {
-        Text("Hello World")
-            .font(.largeTitle)
-            .border(Color.black)
-            //.frame(width: 300, height: 100, alignment: .center)
-            //.frame(minWidth: 100, maxWidth: 300,
-            //      minHeight: 100, maxHeight: 100,
-            //      alignment: .center)
-            .frame(minWidth: 0, maxWidth: .infinity,
-                   minHeight: 0, maxHeight: .infinity)
-            .background(Color.green)
-            .ignoresSafeArea(.all)      // 전체 화면을 쓸 수 있게 해 주는 생성자
+        VStack {
+            VStack {
+                Spacer()        // 가변적 공간
+                Text("Hello, world!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .rotationEffect(.degrees(rotation))
+                // 5초 동안 애니메이션 실행
+                    .animation(.easeInOut(duration: 5), value: rotation)
+                    .foregroundStyle(colors[colorIndex])
+                Spacer()
+                Divider()
+                Slider(value: $rotation, in: 0 ... 360, step: 0.1)
+                    .padding()
+                TextField("Enter text here", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Picker(selection: $colorIndex, label: Text("Color")) {
+                    ForEach (0 ..< colornames.count, id:\.self) { color in
+                        Text(colornames[color])
+                            .foregroundColor(colors[color])
+                    }
+                }
+                .pickerStyle(.wheel)
+                .padding()
+            }
+        }
     }
+}
+let name = { () -> Void in
+    print("Hello!")
 }
 
 
