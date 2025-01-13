@@ -14,9 +14,9 @@ struct SecondTabView: View {
         TextEditor(text: $text)
             .padding()
             // text 변수의 변경시 실행되는 수정자
-            .onChange(of: text, perform: { value in
-                print("onChange triggered")
-            })
+            .onChange(of: text, initial: false) {
+                print("onChange triggered \(text)")
+            }
     }
 }
 
