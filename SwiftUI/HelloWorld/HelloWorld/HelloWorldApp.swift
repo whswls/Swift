@@ -25,7 +25,7 @@ struct CounterApp: App {
             case .background:
                 print("Background")
             default :
-                phase
+                print("Unknown")
             }
         }
     }
