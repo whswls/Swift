@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var timerData: TimerData = TimerData()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Timer count = \(timerData.timeCount)")
                     .font(.largeTitle)
@@ -24,10 +24,11 @@ struct ContentView: View {
                 }
                 
                 NavigationLink("Next Screen", destination: {
-                    SecondView(timerData: timerData)
+                    SecondView()
                 })
             }
         }
+        .environment(timerData)
     }
     func resetCount() {
         timerData.resetCount()
