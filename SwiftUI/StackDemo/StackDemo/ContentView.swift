@@ -7,8 +7,36 @@
 
 import SwiftUI
 
+// 새로운 세로 정렬 값을 추가
+extension VerticalAlignment {
+    private enum OneThird: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            d.height / 3
+        }
+    }
+    static let oneThird = VerticalAlignment(OneThird.self)
+}
+
+
 struct ContentView: View {
     var body: some View {
+        HStack(alignment: .oneThird) {
+            Rectangle()
+                .fill(Color.green)
+                .frame(width: 50, height: 200)
+            Rectangle()
+                .fill(Color.red)
+                .alignmentGuide(.oneThird) { d in
+                    d[VerticalAlignment.top] }
+                .frame(width: 50, height: 200)
+            Rectangle()
+                .fill(Color.blue)
+                .frame(width: 50, height: 200)
+            Rectangle()
+                .fill(Color.orange)
+                .alignmentGuide(.oneThird) { d in d[VerticalAlignment.top] }
+                .frame(width: 50, height: 200)
+        }
         // alignment 파라미터로 정렬
         VStack(alignment: .trailing) {
             Text("This is some text")
