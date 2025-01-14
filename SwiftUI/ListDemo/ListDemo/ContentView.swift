@@ -7,35 +7,46 @@
 
 import SwiftUI
 
+struct TodoItem: Identifiable {
+    let id: UUID = UUID()
+    let task: String
+    var imageName: String
+}
+
 struct ContentView: View {
+    @State var toggleStatus: Bool = false
+    
+    @State var listData: [TodoItem] = [
+        TodoItem(task: "Take out trash",
+                 imageName: "trash.circle.fill"),
+        TodoItem(task: "Pick up the kids",
+                 imageName: "person.2.fill"),
+        TodoItem(task: "Wash the car",
+                 imageName: "car.fill"),
+    ]
     var body: some View {
         List {
-            Text("Wash the car")
-            Text("Vacuum house")
-            Text("Pick up kids from school bus @ 3pm")
-            Text("Auction the kids on eBay")
-            Text("Order Pizza for dinner")
-            
-            HStack {
-                Image(systemName: "trash.circle.fill")
-                Text("Take out the trash")
+            Section(header: Text("Settings")) {
+                Toggle(isOn: $toggleStatus) {
+                    Text("Allow Notifications")
+                }
             }
-            HStack {
-                Image(systemName: "person.2.fill")
-                Text("Pick up the kids")
+            Section(header: Text("To Do Tasks")) {
+                ForEach(listData) {
+                    item in
+                    HStack {
+                        Image(systemName: item.imageName)
+                        Text(item.task)
+                    }
+                }
             }
-            HStack {
-                Image(systemName: "car.fill")
-                Text("Wash the car")
-            }
-            Text("Wash the car")
-                .listRowSeparator(.hidden)
-            Text("Pick up kids from school bus @ 3pm")
-                .listRowSeparatorTint(.green)
-            Text("Auction the kids on eBay")
-                .listRowSeparatorTint(.red)
-            Text("Kirby")
-                .listRowBackground(Image("background"))
+        }
+        .refreshable {
+            listData = [
+                TodoItem(task: "Order dinner", imageName: "dollarsign.circle.fill"),
+                TodoItem(task: "Call financial advisor", imageName: "phone.fill"),
+                TodoItem(task: "Sell the kids", imageName: "person.2.fill")
+            ]
         }
     }
 }
