@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Car: Codable, Identifiable {
+struct Car: Codable, Identifiable, Hashable {
     var id: String
     var name: String
     var description: String
