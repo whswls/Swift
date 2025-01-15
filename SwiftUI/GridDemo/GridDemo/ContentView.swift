@@ -8,16 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var colors: [Color] = [.blue, .yellow, .green]
-    private var gridItems = [ GridItem(.fixed(100)),
-                              GridItem(.adaptive(minimum: 50)),
-                              GridItem(.fixed(100)) ]
+    
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyVGrid(columns: gridItems, spacing: 5) {
-                ForEach((0...88), id: \.self) { index in
-                    CellContent(index: index, color: colors[index % colors.count])
+        Grid(alignment: .topLeading, verticalSpacing: 15) {
+            GridRow {
+                ForEach(1...5, id: \.self) { index in
+                    if(index % 2 == 1) {
+                        CellContent(index: index, color: .blue)
+                    } else {
+                        Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                    }
                 }
+                ForEach(1..<5, id: \.self) { index in
+                    CellContent(index: index, color: .red)
+                }
+            }
+            GridRow {
+                ForEach(6..<10, id: \.self) { index in
+                    CellContent(index: index, color: .green)
+                }
+            }
+            GridRow {
+                ForEach(11..<15, id: \.self) { index in
+                    CellContent(index: index, color: .gray)
+                }
+            }
+            // Grid 뷰를 추가할 수 있음
+            CellContent(index: 16, color: .blue)
+            // 셀 병합도 가능
+            GridRow {
+                CellContent(index: 17, color: .yellow)
+                    .gridCellColumns(2)
+                CellContent(index: 18, color: .indigo)
+                    .gridCellColumns(3)
             }
         }
     }
