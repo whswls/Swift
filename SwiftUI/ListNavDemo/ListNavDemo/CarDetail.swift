@@ -3,7 +3,7 @@
 //  ListNavDemo
 //
 //  Created by 존진 on 1/14/25.
-//
+//  메인 -> 해당 차의 상세 뷰
 
 import SwiftUI
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNewCar: View {
     var carStore: CarStore
+    // @Binding: 뷰 간에 양방향 연결을 만드는 것
     @Binding var path: NavigationPath
     
     @State private var isHybrid: Bool = false
