@@ -9,16 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     private var colors: [Color] = [.blue, .yellow, .green]
-    private var gridItems = [ GridItem(.flexible()),
-                              GridItem(.flexible()),
-                              GridItem(.flexible()) ]
+    private var gridItems = [ GridItem(.fixed(100)),
+                              GridItem(.adaptive(minimum: 50)),
+                              GridItem(.fixed(100)) ]
     var body: some View {
-        LazyVGrid(columns: gridItems, spacing: 5) {
-            ForEach((0...8), id: \.self) { index in
-                CellContent(index: index, color: colors[index % colors.count])
+        ScrollView(.horizontal) {
+            LazyVGrid(columns: gridItems, spacing: 5) {
+                ForEach((0...88), id: \.self) { index in
+                    CellContent(index: index, color: colors[index % colors.count])
+                }
             }
         }
-        
     }
 }
 
