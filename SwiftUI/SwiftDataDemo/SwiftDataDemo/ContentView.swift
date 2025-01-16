@@ -29,9 +29,9 @@ struct ContentView: View {
                         Text("Add")
                     })
                     Spacer()
-                    //  NavigationLink(destination: ResultsView(name: name, viewContext: viewContext)) {
-                    //    Text("Find")
-                    //  }
+                    NavigationLink(destination: ResultView(name: name)) {
+                        Text("Find")
+                    }
                     Spacer()
                     Button(action: {
                         name = ""
@@ -57,6 +57,7 @@ struct ContentView: View {
                     }
                     .onDelete(perform: deleteItems)
                 }
+                .navigationTitle("Products")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         EditButton()
