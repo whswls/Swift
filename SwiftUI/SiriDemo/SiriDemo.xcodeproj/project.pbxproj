@@ -6,14 +6,63 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8C8738312D3DDA93006F0D7A /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8738302D3DDA93006F0D7A /* Intents.framework */; };
+		8C8738382D3DDA93006F0D7A /* SiriDemoIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8C87382E2D3DDA93006F0D7A /* SiriDemoIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C8738362D3DDA93006F0D7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C8738102D3DD0B2006F0D7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C87382D2D3DDA93006F0D7A;
+			remoteInfo = SiriDemoIntent;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8C87383D2D3DDA93006F0D7A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8C8738382D3DDA93006F0D7A /* SiriDemoIntent.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8C8738182D3DD0B2006F0D7A /* SiriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C87382E2D3DDA93006F0D7A /* SiriDemoIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriDemoIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C8738302D3DDA93006F0D7A /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8C8738392D3DDA93006F0D7A /* Exceptions for "SiriDemoIntent" folder in "SiriDemoIntent" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8C87382D2D3DDA93006F0D7A /* SiriDemoIntent */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8C87381A2D3DD0B2006F0D7A /* SiriDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SiriDemo;
+			sourceTree = "<group>";
+		};
+		8C8738322D3DDA93006F0D7A /* SiriDemoIntent */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8C8738392D3DDA93006F0D7A /* Exceptions for "SiriDemoIntent" folder in "SiriDemoIntent" target */,
+			);
+			path = SiriDemoIntent;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +75,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C87382B2D3DDA93006F0D7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C8738312D3DDA93006F0D7A /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				8C87381A2D3DD0B2006F0D7A /* SiriDemo */,
+				8C8738322D3DDA93006F0D7A /* SiriDemoIntent */,
+				8C87382F2D3DDA93006F0D7A /* Frameworks */,
 				8C8738192D3DD0B2006F0D7A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +100,17 @@
 			isa = PBXGroup;
 			children = (
 				8C8738182D3DD0B2006F0D7A /* SiriDemo.app */,
+				8C87382E2D3DDA93006F0D7A /* SiriDemoIntent.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8C87382F2D3DDA93006F0D7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C8738302D3DDA93006F0D7A /* Intents.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +123,12 @@
 				8C8738142D3DD0B2006F0D7A /* Sources */,
 				8C8738152D3DD0B2006F0D7A /* Frameworks */,
 				8C8738162D3DD0B2006F0D7A /* Resources */,
+				8C87383D2D3DDA93006F0D7A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8C8738372D3DDA93006F0D7A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8C87381A2D3DD0B2006F0D7A /* SiriDemo */,
@@ -69,6 +139,28 @@
 			productName = SiriDemo;
 			productReference = 8C8738182D3DD0B2006F0D7A /* SiriDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8C87382D2D3DDA93006F0D7A /* SiriDemoIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C87383A2D3DDA93006F0D7A /* Build configuration list for PBXNativeTarget "SiriDemoIntent" */;
+			buildPhases = (
+				8C87382A2D3DDA93006F0D7A /* Sources */,
+				8C87382B2D3DDA93006F0D7A /* Frameworks */,
+				8C87382C2D3DDA93006F0D7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8C8738322D3DDA93006F0D7A /* SiriDemoIntent */,
+			);
+			name = SiriDemoIntent;
+			packageProductDependencies = (
+			);
+			productName = SiriDemoIntent;
+			productReference = 8C87382E2D3DDA93006F0D7A /* SiriDemoIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +173,9 @@
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					8C8738172D3DD0B2006F0D7A = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					8C87382D2D3DDA93006F0D7A = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -100,12 +195,20 @@
 			projectRoot = "";
 			targets = (
 				8C8738172D3DD0B2006F0D7A /* SiriDemo */,
+				8C87382D2D3DDA93006F0D7A /* SiriDemoIntent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8C8738162D3DD0B2006F0D7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C87382C2D3DDA93006F0D7A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +225,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C87382A2D3DDA93006F0D7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C8738372D3DDA93006F0D7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C87382D2D3DDA93006F0D7A /* SiriDemoIntent */;
+			targetProxy = 8C8738362D3DDA93006F0D7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8C8738252D3DD0B3006F0D7A /* Debug */ = {
@@ -248,8 +366,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SiriDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSiriUsageDescription = "Siri support is used to send and review messages.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -265,7 +385,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -285,8 +405,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SiriDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSiriUsageDescription = "Siri support is used to send and review messages.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -302,7 +424,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -310,6 +432,61 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		8C87383B2D3DDA93006F0D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriDemoIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriDemoIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo123.SiriDemoIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C87383C2D3DDA93006F0D7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriDemoIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriDemoIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo123.SiriDemoIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -330,6 +507,15 @@
 			buildConfigurations = (
 				8C8738282D3DD0B3006F0D7A /* Debug */,
 				8C8738292D3DD0B3006F0D7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C87383A2D3DDA93006F0D7A /* Build configuration list for PBXNativeTarget "SiriDemoIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C87383B2D3DDA93006F0D7A /* Debug */,
+				8C87383C2D3DDA93006F0D7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
