@@ -26,7 +26,6 @@ struct AddTodoView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
-                        title = ""
                         dismiss()
                     }
                 }
