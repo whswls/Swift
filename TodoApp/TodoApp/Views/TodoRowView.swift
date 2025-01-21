@@ -8,36 +8,45 @@
 import SwiftUI
 
 struct TodoRowView: View {
-    let item: TodoItem
+    let todo: TodoItem
     
     @State private var showingEditView: Bool = false
     
     var body: some View {
         HStack {
-            Text("\(item.title) at \(item.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .lineLimit(1)
-                .onLongPressGesture {
-                    showingEditView = true
-                }
-            NavigationLink(value: TodoNavigation.detail(item)) {
-                Text(" ")
+            Button(action: {
+                todo.isCompleted.toggle()
+            }, label: {
+                Image(systemName: todo.isCompleted ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(todo.isCompleted ? .green : .gray)
+            })
+            VStack(alignment: .leading) {
+                Text(todo.title)
+                    .strikethrough(todo.isCompleted)
+                Text(todo.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+            }
+            .onLongPressGesture(minimumDuration: 0.5) {
+                showingEditView = true
             }
         }
         .swipeActions(edge: .leading) {
-            NavigationLink(value: TodoNavigation.edit(item)) {
-                Text("Edit")
+            NavigationLink(value: TodoNavigation.detail(todo)) {
+                Text("Detail")
             }
             .tint(.yellow)
         }
         .sheet(isPresented: $showingEditView) {
+            // EditTodoView 안에서 빠진 NavigationStack 을 추가함
+            // ( 팝업일 경우 네비게이션 바 제목을 출력하려면, 독립적인 NavigationStack 따로 필요함 )
             NavigationStack {
-                EditTodoView(todo: item)
+                EditTodoView(todo: todo)
             }
         }
     }
 }
 
 #Preview {
-    TodoRowView(item: TodoItem(title: "Hello, world!"))
+    TodoRowView(todo: TodoItem(title: "Hello, world!"))
 }
