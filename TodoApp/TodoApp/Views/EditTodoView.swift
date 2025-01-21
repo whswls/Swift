@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditTodoView: View {
     @Environment(\.dismiss) private var dismiss
+    
+    @Query private var categories: [Category]
     
     let todo: TodoItem
     
@@ -16,6 +19,7 @@ struct EditTodoView: View {
     @State private var priority: Priority
     @State private var dueDateEnabled: Bool = false
     @State private var dueDate: Date? = nil
+    @State private var selectedCategory: Category?
     
     init(todo: TodoItem) {
         self.todo = todo
@@ -49,6 +53,14 @@ struct EditTodoView: View {
                     }))
                 }
             }
+            Section("Category") {
+                Picker("카테고리", selection: $selectedCategory) {
+                    Text("선택안함").tag(Optional<Category>.none)
+                    ForEach(categories) { category in
+                        Text(category.name ?? "-").tag(Optional(category))
+                    }
+                }
+            }
         }
         .navigationTitle("Edit Todo")
         .toolbar {
@@ -74,4 +86,5 @@ struct EditTodoView: View {
 
 #Preview {
     EditTodoView(todo: TodoItem(title: "Hello, world!!"))
+        .modelContainer(PreviewContainer.shared.container)
 }

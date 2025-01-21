@@ -26,6 +26,14 @@ struct TodoRowView: View {
                 }
             }
             Spacer()
+            if let category = todo.category {
+                Text(category.name ?? "-")
+                    .font(.caption)
+                    .padding(4)
+                    .background(Color.blue.opacity(0.1))
+                    //.clipShape(
+            }
+            Spacer()
             PriorityBadge(priority: todo.priority)
         }
         .onTapGesture {
