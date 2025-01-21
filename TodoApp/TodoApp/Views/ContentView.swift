@@ -13,24 +13,52 @@ struct ContentView: View {
     
     @State private var showingAddTodo = false
     @State private var searchText = ""
+    @State private var priorityFilter: Priority? = nil
     
     var body: some View {
         NavigationStack {
-            TodoListView(searchText: searchText)
-                .searchable(text: $searchText)
-                .navigationTitle("Todo List")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
+            VStack {
+                HStack {
+                    Button {
+                        priorityFilter = nil
+                    } label: {
+                        Text("전체")
+                            .font(.caption)
+                            .padding(4)
+                            .foregroundColor(.white)
+                            .background(.gray)
+                            .clipShape(.rect(cornerRadius: 4))
+                            .overlay {
+                                if priorityFilter == nil {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(.blue, lineWidth: 2)
+                                }
+                            }
                     }
-                    ToolbarItem {
-                        Button(action: {
-                            showingAddTodo = true
-                        }) {
-                            Label("Add Item", systemImage: "plus")
+                    ForEach([Priority.low, Priority.medium, Priority.high], id: \.self) { priority in
+                        Button {
+                            priorityFilter = priority
+                        } label: {
+                            PriorityBadge(priority: priority)
                         }
                     }
                 }
+                TodoListView(searchText: searchText, priorityFilter: priorityFilter)
+                    .searchable(text: $searchText, prompt: "할 일 검색")
+                    .navigationTitle("Todo List")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
+                        }
+                        ToolbarItem {
+                            Button(action: {
+                                showingAddTodo = true
+                            }) {
+                                Label("Add Item", systemImage: "plus")
+                            }
+                        }
+                    }
+            }
         }
         .sheet(isPresented: $showingAddTodo) {
             AddTodoView()

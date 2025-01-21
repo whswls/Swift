@@ -14,12 +14,20 @@ struct AddTodoView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var title: String = ""
+    @State private var priority: Priority = .medium
     
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     TextField("Title", text: $title)
+                    Picker("우선순위", selection: $priority) {
+                        ForEach(Priority.allCases, id: \.self) {
+                            priority in
+                            Text(priority.title)
+                                .tag(priority)
+                        }
+                    }
                 }
             }
             .navigationTitle("New Todo")
@@ -31,7 +39,7 @@ struct AddTodoView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        let todo = TodoItem(title: title)
+                        let todo = TodoItem(title: title, priority: priority)
                         modelContext.insert(todo)
                         // 뷰 닫기와 동시에 모델 컨텍스트 저장이 호출된다.
                         dismiss()
