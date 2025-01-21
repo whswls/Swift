@@ -15,12 +15,23 @@ struct AddTodoView: View {
     
     @State private var title: String = ""
     @State private var priority: Priority = .medium
+    @State private var dueDateEnabled: Bool = false
+    @State private var dueDate: Date? = nil
     
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Title", text: $title)
+                    TextField("제목", text: $title)
+                    Toggle("마감일 설정", isOn: $dueDateEnabled)
+                    if dueDateEnabled {
+                        DatePicker("마감일",
+                                   selection: Binding(get: {
+                            dueDate ?? Date()
+                        }, set: {
+                            dueDate = $0
+                        }))
+                    }
                     Picker("우선순위", selection: $priority) {
                         ForEach(Priority.allCases, id: \.self) {
                             priority in

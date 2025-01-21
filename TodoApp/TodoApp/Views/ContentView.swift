@@ -34,12 +34,20 @@ struct ContentView: View {
                                         .stroke(.blue, lineWidth: 2)
                                 }
                             }
+                        
                     }
-                    ForEach([Priority.low, Priority.medium, Priority.high], id: \.self) { priority in
+                    // enum 타입에 CaseIterable 프로토콜을 사용하면, 반복문에 allCases 프로퍼티를 사용할 수 있다.
+                    ForEach(Priority.allCases, id: \.self) { priority in
                         Button {
                             priorityFilter = priority
                         } label: {
                             PriorityBadge(priority: priority)
+                        }
+                        .overlay {
+                            if priorityFilter == priority {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(.blue, lineWidth: 2)
+                            }
                         }
                     }
                 }
@@ -69,5 +77,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: TodoItem.self, inMemory: true)
+        .modelContainer(PreviewContainer.shared.container)
 }
