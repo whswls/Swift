@@ -16,18 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymw-DK-qKZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymw-DK-qKZ">
                                 <rect key="frame" x="159" y="409" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <segue destination="nP2-cB-2D5" kind="show" id="xa2-ke-X1G"/>
+                                    <action selector="showSwiftUIView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DgZ-bx-8rb"/>
+                                    <segue destination="nP2-cB-2D5" kind="show" destinationCreationSelector="showSwiftUIView:" id="xa2-ke-X1G"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-fP-exx">
+                                <rect key="frame" x="16" y="103" width="361" height="270"/>
+                                <connections>
+                                    <segue destination="i8V-L2-S6j" kind="embed" destinationCreationSelector="embedSwiftUIView:" id="KpQ-ZG-25T"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KSH-fP-exx" secondAttribute="bottom" constant="479" id="GyD-Ac-rEE"/>
+                            <constraint firstItem="KSH-fP-exx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lai-MP-Cg7"/>
+                            <constraint firstItem="KSH-fP-exx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-53" id="WQw-ux-78x"/>
+                            <constraint firstItem="KSH-fP-exx" firstAttribute="centerX" secondItem="Ymw-DK-qKZ" secondAttribute="centerX" id="bXx-d6-KA8"/>
+                            <constraint firstItem="Ymw-DK-qKZ" firstAttribute="top" secondItem="KSH-fP-exx" secondAttribute="bottom" constant="36" id="vvZ-Js-QHo"/>
+                            <constraint firstItem="KSH-fP-exx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="yby-hW-qbx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FRQ-IP-3cu"/>
                 </viewController>
@@ -44,6 +58,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6Q-4c-zBg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1934" y="-2"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="k5b-AD-lnH">
+            <objects>
+                <hostingController id="i8V-L2-S6j" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cFM-Bt-bhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="-720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YKv-k9-bAe">
