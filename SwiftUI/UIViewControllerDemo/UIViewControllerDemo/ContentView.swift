@@ -27,8 +27,7 @@ struct ContentView: View {
                 })
             }
             .padding()
-            
-            if(imagePickerVisible) {
+            .sheet(isPresented: $imagePickerVisible) {
                 MyImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $selectedImage)
             }
         }
