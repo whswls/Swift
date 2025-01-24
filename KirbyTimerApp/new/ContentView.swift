@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
     
@@ -13,6 +14,8 @@ struct ContentView: View {
     @State private var isRunning: Bool = false
     @State private var selectedTime: Int = 60
     private var currentKirbyImage: String = "kirby"
+    
+    @State var player: AVAudioPlayer?
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -22,7 +25,7 @@ struct ContentView: View {
                 Image("cherry")
                     .resizable()
                     .frame(width: 40, height: 40)
-                    .offset(x: 120, y: 30)
+                    .offset(x: 120, y: 60)
                 Image("hamburger")
                     .resizable()
                     .frame(width: 50, height: 45)
@@ -31,6 +34,14 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 50, height: 45)
                     .offset(x: 10, y: 30)
+                Image("pudding")
+                    .resizable()
+                    .frame(width: 50, height: 45)
+                    .offset(x: -60, y: 15)
+                Image("milk")
+                    .resizable()
+                    .frame(width: 50, height: 45)
+                    .offset(x: 78, y: 15)
             }
             
             // ZStack을 사용하여 이미지 위에 원형 타이머 배경과 진행 표시
@@ -51,7 +62,7 @@ struct ContentView: View {
                 // 원형 타이머 배경
                 Circle()
                     .stroke(lineWidth: 12)
-                    .foregroundColor(.pink.opacity(0.8))  // 배경 색상
+                    .foregroundColor(.white.opacity(0.8))  // 배경 색상
                     .frame(width: 155, height: 155)
                     .offset(x: 9)
                 
@@ -68,7 +79,7 @@ struct ContentView: View {
             .padding()
             
             Picker("Set Timer", selection: $selectedTime) {
-                ForEach([60, 180, 300, 420, 600], id: \.self) { time in
+                ForEach([60, 180, 300, 360, 420, 480, 540, 600], id: \.self) { time in
                     Text("\(time / 60) min")
                         .tag(time)
                 }
@@ -118,6 +129,7 @@ struct ContentView: View {
             } else if timeRemaining == 0 {
                 // 타이머 멈춤
                 isRunning = false
+                playSound()
             } else {
                 // ignore
             }
@@ -128,6 +140,27 @@ struct ContentView: View {
     private func resetTimer() {
         timeRemaining = selectedTime
         isRunning = false
+        stopMusic()
+    }
+    
+    // 소리 재생
+    func playSound() {
+        
+        guard let url = Bundle.main.url(forResource: "chillguy", withExtension: ".mp3") else { return }
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+            player?.play()
+        } catch {
+            print("Error playing audio: \(error.localizedDescription)")
+        }
+    }
+    
+    // 음악 중지
+    func stopMusic() {
+        player?.stop()
+        player = nil // 객체 초기화 (옵션)
     }
 }
 
