@@ -49,8 +49,9 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 25)
-        // frame layout
+        // frame layout 붙여질 뷰의 위치와 크기 설정
         label.frame = CGRect(x: 20, y: 100, width: view.frame.width - 40, height: 40)
+        // self.view(메인 뷰)에 라벨 추가
         view.addSubview(label)
     }
 
