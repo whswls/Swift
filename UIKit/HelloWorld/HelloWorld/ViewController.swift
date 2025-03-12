@@ -53,6 +53,20 @@ class ViewController: UIViewController {
         label.frame = CGRect(x: 20, y: 100, width: view.frame.width - 40, height: 40)
         // self.view(메인 뷰)에 라벨 추가
         view.addSubview(label)
+        
+        // 버튼 추가
+        let button = UIButton()
+        button.setTitle("Go second", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.frame = CGRect(x: 20, y: 200, width: view.frame.width - 40, height: 40)
+        button.addTarget(self, action: #selector(goSecond), for: .touchUpInside)
+        
+        self.view.addSubview(button)
+    }
+    
+    @objc func goSecond() {
+        let secondVC = SecondViewController()
+        self.present(secondVC, animated: true)
     }
 
 }
