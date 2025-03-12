@@ -21,28 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                Image("cherry")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .offset(x: 120, y: 60)
-                Image("hamburger")
-                    .resizable()
-                    .frame(width: 50, height: 45)
-                    .offset(x: -110, y: 55)
-                Image("tomato")
-                    .resizable()
-                    .frame(width: 50, height: 45)
-                    .offset(x: 10, y: 30)
-                Image("pudding")
-                    .resizable()
-                    .frame(width: 50, height: 45)
-                    .offset(x: -60, y: 15)
-                Image("milk")
-                    .resizable()
-                    .frame(width: 50, height: 45)
-                    .offset(x: 78, y: 15)
-            }
+            Foods()
             
             // ZStack을 사용하여 이미지 위에 원형 타이머 배경과 진행 표시
             ZStack {
@@ -85,7 +64,6 @@ struct ContentView: View {
                 }
             }
             .font(.system(size: 15, weight: .medium))
-            
             .frame(width: 145, height: 20)
             .onChange(of: selectedTime) { newValue in
                 timeRemaining = newValue
@@ -166,4 +144,31 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct Foods: View {
+    var body: some View {
+        ZStack {
+            Image("cherry")
+                .resizable()
+                .frame(width: 40, height: 40)
+                .offset(x: 120, y: 60)
+            Image("hamburger")
+                .resizable()
+                .frame(width: 50, height: 45)
+                .offset(x: -110, y: 55)
+            Image("tomato")
+                .resizable()
+                .frame(width: 50, height: 45)
+                .offset(x: 10, y: 30)
+            Image("pudding")
+                .resizable()
+                .frame(width: 50, height: 45)
+                .offset(x: -60, y: 15)
+            Image("milk")
+                .resizable()
+                .frame(width: 50, height: 45)
+                .offset(x: 78, y: 15)
+        }
+    }
 }
