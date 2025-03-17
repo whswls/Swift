@@ -14,7 +14,7 @@ class GroupBoxViewController: UIViewController {
     let groupBoxLabel = UILabel()
     let toggle = UISwitch()
     let textField = UITextField()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,17 +30,18 @@ class GroupBoxViewController: UIViewController {
         groupBox.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(groupBox)
         
-        groupBoxLabel.text = "Group Box"
+        groupBoxLabel.text = "그룹 박스"
         groupBoxLabel.font = .systemFont(ofSize: 20)
         groupBoxLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(groupBoxLabel)
+        groupBox.addSubview(groupBoxLabel)
         
         toggle.addTarget(self, action: #selector(toggleChanged), for: .valueChanged)
         toggle.translatesAutoresizingMaskIntoConstraints = false
         groupBox.addSubview(toggle)
         
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter text..."
+        textField.placeholder = "텍스트 필드"
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         groupBox.addSubview(textField)
         
@@ -60,17 +61,46 @@ class GroupBoxViewController: UIViewController {
             textField.leadingAnchor.constraint(equalTo: groupBox.leadingAnchor, constant: 10),
             textField.trailingAnchor.constraint(equalTo: groupBox.trailingAnchor, constant: -10),
             textField.bottomAnchor.constraint(equalTo: groupBox.bottomAnchor, constant: -10)
-            
-            
         ])
     }
     
     @objc func toggleChanged() {
         flag = toggle.isOn
         print("flag: \(flag)")
+        // 텍스트 필드 편집 종료
+        textField.resignFirstResponder()
     }
+}
 
-
+extension GroupBoxViewController: UITextFieldDelegate {
+    // 편집 가능 여부 결정
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return flag
+    }
+    
+    // 텍스트 필드 편집 시작
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("편집 시작")
+    }
+    
+    // 텍스트 필드 문자 입력
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        print("실제 입력 값: \(string)")
+        print("현재 텍스트 필드 값: \(currentText)")
+        print("최종 업데이트 텍스트: \(updatedText)")
+        
+        return true
+    }
+    
+    // 필드 편집 종료
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("편집 종료")
+    }
 }
 
 #Preview {
