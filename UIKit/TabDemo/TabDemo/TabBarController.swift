@@ -11,20 +11,31 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = .systemGreen
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = .systemBackground
+        
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
+        setupTabBar()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupTabBar() {
+        // 뷰 컨트롤러 생성
+        let firstVC = FirstViewController()
+        let secondVC = SecondViewController()
+        
+        // 네비게이션 컨트롤러 생성
+        let firstNavController = UINavigationController(rootViewController: firstVC)
+        let secondNavController = UINavigationController(rootViewController: secondVC)
+        
+        // 탭 바 아이템 설정
+        self.viewControllers = [firstNavController, secondNavController]
+        
+        firstNavController.tabBarItem = UITabBarItem(title: "First", image: UIImage(systemName: "1.circle"), tag: 0)
+        secondNavController.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "2.circle"), tag: 1)
     }
-    */
 
 }
 
