@@ -42,12 +42,25 @@ class ItemTableViewController: UITableViewController {
     }
     
     func configureTableView() {
-        tableView.register(UITableViewCell.self ,forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         tableView.rowHeight = 60
     }
     
     @objc func addNewItem() {
-        let iconNames = ["icon_1", "icon_2", "icon_3", "icon_4", "icon_5", "icon_6", "icon_7", "icon_8", "icon_9", "icon_10"]
+        // 랜덤 아이콘 목록
+        let iconNames = ["star.fill", "heart.fill", "bell.fill", "cloud.fill",
+                         "bolt.fill", "flame.fill", "leaf.fill", "sun.max.fill"]
+        
+        // 랜덤 타이틀 목록
+        let titles = ["행복한", "멋진", "환상적인", "훌륭한", "놀라운", "대단한", "아름다운", "즐거운"]
+        
+        // 랜덤 아이템 생성
+        let randomTitle = titles.randomElement() ?? "항목"
+        let randomIcon = iconNames.randomElement() ?? "star.fill"
+        let newItem = GridItem(title: randomTitle, imageSystemName: randomIcon)
+        
+        // Core Data에 저장
+        saveGridItem(newItem)
     }
     
     // 데이터 저장
@@ -64,20 +77,18 @@ class ItemTableViewController: UITableViewController {
     }
     
     private func loadGridItems() {
-        // 랜덤 아이콘 목록
-        let iconNames = ["star.fill", "heart.fill", "bell.fill", "cloud.fill",
-                         "bolt.fill", "flame.fill", "leaf.fill", "sun.max.fill"]
+        let request: NSFetchRequest<GridItemEntity> = GridItemEntity.fetchRequest()
+        // 생성일 순으로 정렬
+        request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: true)]
         
-        // 랜덤 타이틀 목록
-        let titles = ["행복한", "멋진", "환상적인", "훌륭한", "놀라운", "대단한", "아름다운", "즐거운"]
-        
-        // 랜덤 아이템 생성
-        let randomTitle = titles.randomElement() ?? "항목"
-        let randomIcon = iconNames.randomElement() ?? "star.fill"
-        let newItem = GridItem(title: randomTitle, imageSystemName: randomIcon)
-        
-        // Core Data에 저장
-        saveGridItem(newItem)
+        do {
+            let result = try viewContext.fetch(request)
+            items = result.compactMap { GridItem.from($0) }
+            // 테이블 뷰 리로드
+            tableView.reloadData()
+        } catch {
+            print("데이터 로드 실패: \(error)")
+        }
     }
     
     // 데이터 삭제
@@ -100,7 +111,6 @@ class ItemTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -108,7 +118,7 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 100
+        return items.count
     }
     
     
@@ -128,7 +138,6 @@ class ItemTableViewController: UITableViewController {
         return cell
     }
     
-    // 스와이프 삭제 기능 구현
     // MARK: - 테이블뷰 델리게이트 메서드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -202,5 +211,6 @@ extension ItemTableViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else { return }
         searchGridItems(text)
     }
+    
     
 }
