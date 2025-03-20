@@ -8,15 +8,22 @@
 import UIKit
 
 class FormTableViewController: UITableViewController {
+    var flag = false
+    let toggle = UISwitch()
+    let button = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.separatorColor = .black
+        
+        setupUI()
+    }
+    
+    func setupUI() {
+        
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 4
@@ -37,8 +44,11 @@ class FormTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.backgroundColor = .systemGray
+        //cell.backgroundColor = .systemGray
         // Configure the cell...
+        var config = cell.defaultContentConfiguration()
+        config.text = "Section: \(indexPath.section), Row: \(indexPath.row)"
+        cell.contentConfiguration = config
         
         return cell
     }
@@ -52,7 +62,6 @@ class FormTableViewController: UITableViewController {
         default:
             return 50
         }
-        return 100
     }
 }
 
