@@ -20,7 +20,16 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("SecondViewController viewDidLoad")
         navigationItem.title = "Second"
+        
+        // NotificationCenter를 사용하여 데이터 변경 감지
+        observer = NotificationCenter.default.addObserver(
+            forName: DataManager.dataChangedNotification,
+            object: nil,
+            queue: .main) { [weak self] _ in
+                self?.updateLabel()
+            }
         
         setupLabel()
     }
@@ -37,14 +46,6 @@ class SecondViewController: UIViewController {
             dataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
-        // NotificationCenter를 사용하여 데이터 변경 감지
-        observer = NotificationCenter.default.addObserver(
-            forName: DataManager.dataChangedNotification,
-            object: nil,
-            queue: .main) { [weak self] _ in
-                self?.updateLabel()
-            }
     }
     
     func updateLabel() {
