@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lGw-sQ-OaD">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,18 +13,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="JournalListViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eBP-kp-yp8">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="SOu-eM-JhY">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="44.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SOu-eM-JhY" id="tpG-F8-NV0">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" systemColor="systemCyanColor"/>
                                         </tableViewCellContentView>
@@ -45,7 +45,13 @@
                             <constraint firstItem="eBP-kp-yp8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rhS-M5-WAN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Journal" id="MEI-hM-ybP"/>
+                    <navigationItem key="navigationItem" title="Journal" id="MEI-hM-ybP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JwH-m8-uOm">
+                            <connections>
+                                <segue destination="Q56-Xv-C60" kind="presentation" id="hi8-GR-AdP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eBP-kp-yp8" id="UL3-wN-KU7"/>
                     </connections>
@@ -54,12 +60,36 @@
             </objects>
             <point key="canvasLocation" x="1989" y="4"/>
         </scene>
+        <!--New Entry-->
+        <scene sceneID="DHq-UV-lf4">
+            <objects>
+                <viewController id="XP7-Lw-sbs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LzV-IJ-wE8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aA5-OY-DGs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Entry" id="qaI-1b-yJ8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="J70-uF-wgn">
+                            <connections>
+                                <segue destination="haz-Kf-CVT" kind="unwind" unwindAction="unwindNewEntryCancelWithSegue:" id="qCX-H8-PuA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UkZ-1I-lQt"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wk-vR-teb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="haz-Kf-CVT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3764" y="3"/>
+        </scene>
         <!--Map-->
         <scene sceneID="vmn-ph-vct">
             <objects>
                 <viewController id="L5L-ee-v6s" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EV3-du-nDZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="4bc-8i-oaT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,7 +125,7 @@
                     <tabBarItem key="tabBarItem" title="Journal" image="person.fill" catalog="system" id="ItF-vg-9eB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nHB-rP-0pf">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -114,7 +144,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="3o3-Lz-qLR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jvM-MX-kEy">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -125,6 +155,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOo-OQ-WPP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061.8320610687022" y="765.49295774647896"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eAV-f2-1dL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q56-Xv-C60" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6xl-y6-O42">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XP7-Lw-sbs" kind="relationship" relationship="rootViewController" id="BEX-p3-4ru"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m20-p7-Iwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2931" y="4"/>
         </scene>
     </scenes>
     <resources>
