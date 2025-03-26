@@ -10,9 +10,12 @@ import UIKit
 class JournalListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var sampleJournalEntryData = SampleJournalEntryData()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // 샘플 데이터 생성
+        sampleJournalEntryData.createSampleJournalEntryData()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -22,10 +25,17 @@ class JournalListViewController: UIViewController {
 
 extension JournalListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return sampleJournalEntryData.journalEntries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
+        let journalCell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! JournalListTableViewCell
+        
+        let journalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        journalCell.dateLabel.text = journalEntry.date.formatted(.dateTime.month().day().year())
+        journalCell.titleLabel.text = journalEntry.entryTitle
+        journalCell.photoImageView.image = journalEntry.photo
+        
+        return journalCell
     }
 }

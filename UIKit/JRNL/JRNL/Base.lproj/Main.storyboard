@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="SOu-eM-JhY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="SOu-eM-JhY" customClass="JournalListTableViewCell" customModule="JRNL" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SOu-eM-JhY" id="tpG-F8-NV0">
@@ -61,6 +61,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="2gq-d5-0m8" id="RMU-cX-JZU"/>
+                                            <outlet property="photoImageView" destination="Ewn-SM-Vr2" id="V90-DP-TtQ"/>
+                                            <outlet property="titleLabel" destination="773-oc-FwK" id="RY2-LA-oyI"/>
                                             <segue destination="J2I-A0-zuG" kind="show" id="Uqq-3a-r2y"/>
                                         </connections>
                                     </tableViewCell>
@@ -98,7 +101,7 @@
         <!--New Entry-->
         <scene sceneID="DHq-UV-lf4">
             <objects>
-                <viewController id="XP7-Lw-sbs" sceneMemberID="viewController">
+                <viewController id="XP7-Lw-sbs" customClass="AddJournalEntryViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LzV-IJ-wE8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,6 +169,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="UkZ-1I-lQt"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="1jJ-Qp-Mn2" id="zMq-j0-AS1"/>
+                        <outlet property="photoImageView" destination="Z8K-KJ-0xT" id="cJI-UT-y5y"/>
+                        <outlet property="titleTextField" destination="nWY-AG-Kcv" id="yao-bL-H64"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wk-vR-teb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="haz-Kf-CVT" userLabel="Exit" sceneMemberID="exit"/>
