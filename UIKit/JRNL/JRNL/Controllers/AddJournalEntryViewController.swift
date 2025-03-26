@@ -13,6 +13,8 @@ class AddJournalEntryViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet weak var getLocationSwitch: UISwitch!
+    @IBOutlet weak var getLocationSwitchLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
     var newJournalEntry: JournalEntry?
@@ -28,6 +30,14 @@ class AddJournalEntryViewController: UIViewController {
         // 위치 정보 사용을 위한 설정
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+    }
+    @IBAction func getLocationSwitchValueChanged(_ sender: Any) {
+        if getLocationSwitch.isOn {
+            getLocationSwitchLabel.text = "Getting Location..."
+            locationManager.requestLocation()
+        } else {
+            getLocationSwitchLabel.text = "Get Location"
+        }
     }
     
     // MARK: - Navigation
@@ -97,6 +107,7 @@ extension AddJournalEntryViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         currentLocation = location
+        getLocationSwitchLabel.text = "Location: \(location.coordinate.latitude), \(location.coordinate.longitude)"
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
