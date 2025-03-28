@@ -15,6 +15,7 @@ class JournalListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SharedData.shared.loadJournalEntriesData()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -60,7 +61,6 @@ extension JournalListViewController: UITableViewDataSource {
         if let photoData = journalEntry.photoData {
             journalCell.photoImageView.image = UIImage(data: photoData)
         }
-        
         return journalCell
     }
 }

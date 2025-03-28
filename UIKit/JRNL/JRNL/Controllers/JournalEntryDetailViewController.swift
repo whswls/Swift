@@ -31,8 +31,8 @@ class JournalEntryDetailViewController: UITableViewController {
         titleLabel.text = selectedJournalEntry.entryTitle
         bodyTextView.text = selectedJournalEntry.entryBody
         if let photoData = selectedJournalEntry.photoData {
-              photoImageView.image = UIImage(data: photoData)
-            }
+            photoImageView.image = UIImage(data: photoData)
+        }
         getMapSnapshot()
     }
     
