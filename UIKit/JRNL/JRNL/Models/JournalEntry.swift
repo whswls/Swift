@@ -8,7 +8,6 @@ import UIKit
 import MapKit
 
 class JournalEntry: NSObject, MKAnnotation {
-    
     let date: Date
     let rating: Int
     let entryTitle: String

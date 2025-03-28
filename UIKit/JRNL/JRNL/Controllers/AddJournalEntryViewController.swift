@@ -1,3 +1,10 @@
+//
+//  AddJournalEntryViewController.swift
+//  JRNL
+//
+//  Created by 존진 on 3/26/25.
+//
+
 import UIKit
 import CoreLocation
 
