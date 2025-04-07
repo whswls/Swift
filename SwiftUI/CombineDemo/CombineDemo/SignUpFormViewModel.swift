@@ -27,7 +27,7 @@ class SignUpFormViewModel: ObservableObject {
     
     private lazy var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> = {
         $password
-            //.map { $0.isEmpty } 을 다음과 같이 축약해서 사용할 수 있다.
+        //.map { $0.isEmpty } 을 다음과 같이 축약해서 사용할 수 있다.
             .map(\.isEmpty)
             .eraseToAnyPublisher()
     }()
@@ -35,16 +35,16 @@ class SignUpFormViewModel: ObservableObject {
     // 비밀번호와 비밀번호 확인 일치 검사
     private lazy var isPasswordMatchingPublisher: AnyPublisher<Bool, Never> = {
         Publishers.CombineLatest($password, $passwordConfirmation)
-       // .map { $0 == $1 } 을 다음과 같이 축약해서 사용할 수 있다.
-        .map(==)
-        .eraseToAnyPublisher()
+        // .map { $0 == $1 } 을 다음과 같이 축약해서 사용할 수 있다.
+            .map(==)
+            .eraseToAnyPublisher()
     }()
     
     // 위 두개의 비밀번호 검사 결과를 합쳐서 비밀번호 유효성 검사
     private lazy var isPasswordValidPublisher: AnyPublisher<Bool, Never> = {
         Publishers.CombineLatest(isPasswordEmptyPublisher, isPasswordMatchingPublisher)
-        .map { !$0 && $1 }
-        .eraseToAnyPublisher()
+            .map { !$0 && $1 }
+            .eraseToAnyPublisher()
     }()
     
     private lazy var isFormValidPublisher: AnyPublisher<Bool, Never> = {
@@ -56,13 +56,20 @@ class SignUpFormViewModel: ObservableObject {
     
     init() {
         isUsernameLengthValidPublisher
-        .map { $0 ? "" : "사용자 이름은 3자 이상이어야 합니다." }
-        .assign(to: &$usernameMessage)
+            .map { $0 ? "" : "사용자 이름은 3자 이상이어야 합니다." }
+            .assign(to: &$usernameMessage)
         
         // 비밀번호 유효성 검사
-        isPasswordValidPublisher
-        .map { $0 ? "" : "비밀번호가 비어있거나 일치하지 않습니다." }
-        .assign(to: &$passwordMessage)
+        Publishers.CombineLatest(isPasswordEmptyPublisher, isPasswordMatchingPublisher)
+            .map { isEmpty, isMatching in
+                if isEmpty {
+                    return "비밀번호를 입력하세요."
+                } else if !isMatching {
+                    return "비밀번호가 일치하지 않습니다."
+                } else {
+                    return ""
+                }
+            }
         
         // 폼 유효성 검사
         isFormValidPublisher
