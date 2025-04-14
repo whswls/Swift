@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		8C283B212DACD28E009B954B /* PBXContainerItemProxy */ = {
+		8C283B4B2DACDC45009B954B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C283B0B2DACD28D009B954B /* Project object */;
 			proxyType = 1;
@@ -18,18 +18,31 @@
 
 /* Begin PBXFileReference section */
 		8C283B132DACD28D009B954B /* HelloWorldTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorldTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C283B202DACD28E009B954B /* HelloWorldTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloWorldTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C283B472DACDC45009B954B /* FizzBuzzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FizzBuzzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8C283B512DACDC72009B954B /* Exceptions for "HelloWorldTest" folder in "FizzBuzzTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FizzBuzz.swift,
+			);
+			target = 8C283B462DACDC45009B954B /* FizzBuzzTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8C283B152DACD28D009B954B /* HelloWorldTest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8C283B512DACDC72009B954B /* Exceptions for "HelloWorldTest" folder in "FizzBuzzTests" target */,
+			);
 			path = HelloWorldTest;
 			sourceTree = "<group>";
 		};
-		8C283B232DACD28E009B954B /* HelloWorldTestTests */ = {
+		8C283B482DACDC45009B954B /* FizzBuzzTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HelloWorldTestTests;
+			path = FizzBuzzTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -42,7 +55,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C283B1D2DACD28E009B954B /* Frameworks */ = {
+		8C283B442DACDC45009B954B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				8C283B152DACD28D009B954B /* HelloWorldTest */,
-				8C283B232DACD28E009B954B /* HelloWorldTestTests */,
+				8C283B482DACDC45009B954B /* FizzBuzzTests */,
 				8C283B142DACD28D009B954B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8C283B132DACD28D009B954B /* HelloWorldTest.app */,
-				8C283B202DACD28E009B954B /* HelloWorldTestTests.xctest */,
+				8C283B472DACDC45009B954B /* FizzBuzzTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,27 +108,27 @@
 			productReference = 8C283B132DACD28D009B954B /* HelloWorldTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8C283B1F2DACD28E009B954B /* HelloWorldTestTests */ = {
+		8C283B462DACDC45009B954B /* FizzBuzzTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C283B372DACD28E009B954B /* Build configuration list for PBXNativeTarget "HelloWorldTestTests" */;
+			buildConfigurationList = 8C283B4D2DACDC45009B954B /* Build configuration list for PBXNativeTarget "FizzBuzzTests" */;
 			buildPhases = (
-				8C283B1C2DACD28E009B954B /* Sources */,
-				8C283B1D2DACD28E009B954B /* Frameworks */,
-				8C283B1E2DACD28E009B954B /* Resources */,
+				8C283B432DACDC45009B954B /* Sources */,
+				8C283B442DACDC45009B954B /* Frameworks */,
+				8C283B452DACDC45009B954B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8C283B222DACD28E009B954B /* PBXTargetDependency */,
+				8C283B4C2DACDC45009B954B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				8C283B232DACD28E009B954B /* HelloWorldTestTests */,
+				8C283B482DACDC45009B954B /* FizzBuzzTests */,
 			);
-			name = HelloWorldTestTests;
+			name = FizzBuzzTests;
 			packageProductDependencies = (
 			);
-			productName = HelloWorldTestTests;
-			productReference = 8C283B202DACD28E009B954B /* HelloWorldTestTests.xctest */;
+			productName = FizzBuzzTests;
+			productReference = 8C283B472DACDC45009B954B /* FizzBuzzTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -131,7 +144,7 @@
 					8C283B122DACD28D009B954B = {
 						CreatedOnToolsVersion = 16.3;
 					};
-					8C283B1F2DACD28E009B954B = {
+					8C283B462DACDC45009B954B = {
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 8C283B122DACD28D009B954B;
 					};
@@ -152,7 +165,7 @@
 			projectRoot = "";
 			targets = (
 				8C283B122DACD28D009B954B /* HelloWorldTest */,
-				8C283B1F2DACD28E009B954B /* HelloWorldTestTests */,
+				8C283B462DACDC45009B954B /* FizzBuzzTests */,
 			);
 		};
 /* End PBXProject section */
@@ -165,7 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C283B1E2DACD28E009B954B /* Resources */ = {
+		8C283B452DACDC45009B954B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,7 +195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C283B1C2DACD28E009B954B /* Sources */ = {
+		8C283B432DACDC45009B954B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -192,10 +205,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8C283B222DACD28E009B954B /* PBXTargetDependency */ = {
+		8C283B4C2DACDC45009B954B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8C283B122DACD28D009B954B /* HelloWorldTest */;
-			targetProxy = 8C283B212DACD28E009B954B /* PBXContainerItemProxy */;
+			targetProxy = 8C283B4B2DACDC45009B954B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -377,7 +390,7 @@
 			};
 			name = Release;
 		};
-		8C283B382DACD28E009B954B /* Debug */ = {
+		8C283B4E2DACDC45009B954B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -385,9 +398,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.HelloWorldTestTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.FizzBuzzTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -396,7 +408,7 @@
 			};
 			name = Debug;
 		};
-		8C283B392DACD28E009B954B /* Release */ = {
+		8C283B4F2DACDC45009B954B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -404,9 +416,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.HelloWorldTestTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.FizzBuzzTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -436,11 +447,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C283B372DACD28E009B954B /* Build configuration list for PBXNativeTarget "HelloWorldTestTests" */ = {
+		8C283B4D2DACDC45009B954B /* Build configuration list for PBXNativeTarget "FizzBuzzTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C283B382DACD28E009B954B /* Debug */,
-				8C283B392DACD28E009B954B /* Release */,
+				8C283B4E2DACDC45009B954B /* Debug */,
+				8C283B4F2DACDC45009B954B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
