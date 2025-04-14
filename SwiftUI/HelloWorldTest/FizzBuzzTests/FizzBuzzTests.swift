@@ -27,13 +27,25 @@ final class FizzBuzzTests: XCTestCase {
     }
 
     func testFizzBuzzDivisibleBy5() throws {
-        let result5 = fizzBuzz(5)
-        XCTAssertEqual(result5, "Buzz")
+        let result = fizzBuzz(5)
+        XCTAssertEqual(result, "Buzz")
     }
     
     func testFizzBuzzDivisibleBy15() throws {
-        let result15 = fizzBuzz(15)
-        XCTAssertEqual(result15, "Fizz-Buzz")
+        let result = fizzBuzz(15)
+        XCTAssertEqual(result, "Fizz-Buzz")
+    }
+    
+    func testFizzBuzzNotDivisibaleBy30r5ReturnInput() throws {
+        let result = fizzBuzz(7)
+        XCTAssertEqual(result, "7")
+    }
+    
+    func testAsyncSum() async throws {
+        await asyncSum(a: 3, b: 5) {
+            result in
+            XCTAssertEqual(result, 8)
+        }
     }
 }
 

@@ -9,11 +9,18 @@ public func fizzBuzz(_ number: Int) -> String {
     if number % 3 == 0 && number % 5 == 0 {
         return "fizz-buzz"
     }
-    if number % 3 == 0 {
+    else if number % 3 == 0 {
         return "fizz"
     }
-    if number % 5 == 0 {
+    else if number % 5 == 0 {
         return "buzz"
+    } else {
+        return "\(number)"
     }
-    return "\(number)"
+}
+
+func asyncSum(a: Int, b: Int, complete: @escaping (Int) -> Void) async {
+    // Simulate some asynchronous work
+    try? await Task.sleep(nanoseconds: 200_000_000)
+    complete(a + b)
 }
